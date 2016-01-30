@@ -33,8 +33,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def get_recos():
-    history = shortener.list().execute()
+    history = shortener.list(projection='FULL').execute()
     return j(history)
 
 if __name__ == '__main__':
-    app.run('0.0.0.0')
+    app.run('0.0.0.0', debug=e.get('DEBUG', False))
